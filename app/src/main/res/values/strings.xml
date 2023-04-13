@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FirebaseForum</string>
+    <string name="title_home">Home</string>
+    <string name="title_forums">Forums</string>
+    <string name="login_str">Login</string>
+    <string name="register_str">Register</string>
+    <string name="password_hint">Password (confirm)</string>
+    <string name="password_label">Password</string>
+    <string name="e_mail_label">E-mail</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="password_mismatch">Password is not the same</string>
+    <string name="name">Room name</string>
+    <string name="create_str">Create</string>
+    <string name="cancel_str">Cancel</string>
+    <string name="missing_input">Missing input</string>
+    <string name="name_taken">Room name is used</string>
+    <string name="enter_str">Enter</string>
+    <string name="wrong_pass_msg">Wrong password</string>
+    <string name="try_again_msg">Try again</string>
+    <string name="is_private_msg">Is private</string>
+    <string name="last_message_str">Last message:</string>
+    <string name="new_room_str">New room</string>
+    <string name="post">Post</string>
+</resources>
