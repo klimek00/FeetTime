@@ -23,11 +23,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:hint="@string/e_mail_label"
-        android:textColorHint="@color/primary"
+        android:textColorHint="@color/purple_200"
         android:visibility="visible"
 
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/primary_variant"
+        app:boxStrokeColor="@color/purple_500"
         app:boxStrokeWidth="1dp"
         app:endIconMode="clear_text"
         app:endIconTint="@color/secondary"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:startIconDrawable="@drawable/ic_person"
-        app:startIconTint="@color/primary"
+        app:startIconTint="@color/purple_200"
         tools:visibility="visible">
 
         <com.google.android.material.textfield.TextInputEditText

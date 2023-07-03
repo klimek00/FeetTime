@@ -8,8 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebaseforum.R
+import com.example.firebaseforum.data.Room
 import com.example.firebaseforum.databinding.ForumsScreenItemBinding
+import com.example.firebaseforum.firebase.FirebaseHandler
 import com.example.firebaseforum.helpers.RVItemClickListener
+import com.example.firebaseforum.helpers.myCapitalize
+import com.example.firebaseforum.helpers.toDateString
 
 
 // The class takes an RVItemClickListener as a parameter, which will be used to handle clicks on the RecyclerView items
@@ -43,8 +48,13 @@ class ForumsRecyclerViewAdapter(private val clickListener: RVItemClickListener) 
     // Binds the ViewHolder to the item at the specified position
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-
+        //calls the bind method of viewHolder, passing in the room object at the specificied position
+        holder.bind(item)
+        //sets on item click listener on the viewholder's root view, calling onItemClick with the adapter position
+        holder.setOnClickListener(clickListener)
     }
+
+
 
     // ViewHolder class for the RecyclerView
     inner class ViewHolder(binding: ForumsScreenItemBinding) :
@@ -63,6 +73,34 @@ class ForumsRecyclerViewAdapter(private val clickListener: RVItemClickListener) 
         override fun toString(): String {
             // Returns a string representation of the ViewHolder
             return super.toString() + " '" + (forumLabel.text) + "'"
+        }
+        fun setOnClickListener(listener: RVItemClickListener) {
+            rootView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
+        fun bind(room: Room) {
+            forumLabel.text = room.roomName?.myCapitalize()
+            forumOwner.text = "by ${room.ownerEmail}"
+            forumDate.text = room.lastMessageTimestamp?.toDateString()
+            postAuthor.text = room.lastMessageAuthor
+            val isOwner = room.ownerEmail == FirebaseHandler.Authentication.getUserEmail()
+            // Sets the lock icon to either the open or closed version based on the Room's isPrivate field
+            lock.setImageResource(
+                if (room.isPrivate == true)
+                    R.drawable.ic_lock
+                else
+                    R.drawable.ic_lock_open
+            )
+            // Sets the background color of the decoration view based on whether the user is the owner of the Room
+                decoration.setBackgroundColor(
+                    decoration.context.getColor(
+                        if (isOwner)
+                            R.color.secondary
+                        else
+                            R.color.primary
+                    )
+                )
         }
     }
 }

@@ -7,8 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebaseforum.R
+import com.example.firebaseforum.data.Room
 import com.example.firebaseforum.databinding.HomeScreenItemBinding
+import com.example.firebaseforum.firebase.FirebaseHandler
 import com.example.firebaseforum.helpers.RVItemClickListener
+import com.example.firebaseforum.helpers.myCapitalize
+import com.example.firebaseforum.helpers.toDateString
+import com.example.firebaseforum.ui.forums.ForumsRecyclerViewAdapter
 
 
 class HomeRecyclerViewAdapter(
@@ -46,10 +52,12 @@ class HomeRecyclerViewAdapter(
     }
 
     // Overrides the onBindViewHolder method to bind the data to the ViewHolder and set the click listener
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val item = getItem(position) // Gets the Room object at the specified position
-
+    override fun onBindViewHolder(holder: HomeRecyclerViewAdapter.ViewHolder, position: Int) {
+        val item = getItem(position)
+        //calls the bind method of viewHolder, passing in the room object at the specificied position
+        holder.bind(item)
+        //sets on item click listener on the viewholder's root view, calling onItemClick with the adapter position
+        holder.setOnClickListener(clickListener)
     }
 
     // Defines a ViewHolder that extends RecyclerView.ViewHolder and takes a binding object as a parameter
@@ -65,6 +73,18 @@ class HomeRecyclerViewAdapter(
 
         override fun toString(): String {
             return super.toString() + " '" + (itemLabel.text) + "'"
+        }
+        fun setOnClickListener(listener: RVItemClickListener) {
+            rootView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
+        fun bind(room: Room) {
+            itemLabel.text = room.ownerEmail
+            itemDate.text = room.lastMessageTimestamp?.toDateString()
+            itemPost.text = room.lastMessage
+            val isOwner = room.ownerEmail == FirebaseHandler.Authentication.getUserEmail()
+
         }
     }
 

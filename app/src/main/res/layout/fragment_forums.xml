@@ -35,12 +35,12 @@
         android:lines="2"
         android:text="@string/new_room_str"
         android:textAlignment="viewStart"
-        android:textColor="@color/primary"
+        android:textColor="@color/purple_200"
         android:textSize="11sp"
         app:backgroundTint="@color/secondary_variant"
         app:elevation="2dp"
         app:icon="@drawable/ic_add"
-        app:iconTint="@color/primary"
+        app:iconTint="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

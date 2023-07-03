@@ -7,7 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebaseforum.R
+import com.example.firebaseforum.data.Post
 import com.example.firebaseforum.databinding.RoomPostBinding
+import com.example.firebaseforum.firebase.FirebaseHandler
+import com.example.firebaseforum.helpers.toDateString
 
 
 class RoomRecyclerViewAdapter
@@ -41,6 +45,7 @@ class RoomRecyclerViewAdapter
         // Get the Post object at the specified position in the list of items
         val item = getItem(position)
 
+        holder.bind(item)
     }
 
     // A ViewHolder object for displaying a single Post object
@@ -52,6 +57,24 @@ class RoomRecyclerViewAdapter
         private val postDate: TextView = binding.date
         private val decoration: View = binding.decoration
 
+        //binds a post obj to ViewHolder obj
+        fun bind(post: Post) {
+            postText.text = post.message
+            postAuthor.text = post.author
+            postDate.text = post.timestamp?.toDateString()
+
+            val isOwner = post.author == FirebaseHandler.Authentication.getUserEmail()
+
+            decoration.setBackgroundColor(
+                decoration.context.getColor(
+                    if (isOwner) {
+                        R.color.secondary
+                    } else {
+                        R.color.primary
+                    }
+                )
+            )
+        }
 
         // Returns a string representation of the ViewHolder object
         override fun toString(): String {
