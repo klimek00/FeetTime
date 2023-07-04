@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="grey">#C7C7C7</color>
+    <color name="primary">#FFB300</color>
+    <color name="primary_variant">#ff8e00</color>
+    <color name="primary_variant_light">#ffecb3</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="secondary">#7287ff</color>
+    <color name="secondary_variant">#294ef1</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="app_name">FirebaseForum</string>
+    <string name="cancel_str">Cancel</string>
+    <string name="create_str">Create</string>
+    <string name="default_web_client_id" translatable="false">283751912262-ngo0llm5qh9tpehgoepq6vneau1moec7.apps.googleusercontent.com</string>
+    <string name="e_mail_label">E-mail</string>
+    <string name="enter_str">Enter</string>
+    <string name="gcm_defaultSenderId" translatable="false">283751912262</string>
+    <string name="google_api_key" translatable="false">AIzaSyA_fgQEQliFpCs1dI_8RTHNXgN0QQIM6Og</string>
+    <string name="google_app_id" translatable="false">1:283751912262:android:d5ded10df1fc99b6878b47</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA_fgQEQliFpCs1dI_8RTHNXgN0QQIM6Og</string>
+    <string name="google_storage_bucket" translatable="false">fir-forum-9f30a.appspot.com</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="is_private_msg">Is private</string>
+    <string name="last_message_str">Last message:</string>
+    <string name="login_str">Login</string>
+    <string name="missing_input">Missing input</string>
+    <string name="name">Room name</string>
+    <string name="name_taken">Room name is used</string>
+    <string name="new_room_str">New room</string>
+    <string name="password_hint">Password (confirm)</string>
+    <string name="password_label">Password</string>
+    <string name="password_mismatch">Password is not the same</string>
+    <string name="post">Post</string>
+    <string name="project_id" translatable="false">fir-forum-9f30a</string>
+    <string name="register_str">Register</string>
+    <string name="title_forums">Forums</string>
+    <string name="title_home">Home</string>
+    <string name="try_again_msg">Try again</string>
+    <string name="wrong_pass_msg">Wrong password</string>
+    <style name="Theme.FirebaseForum" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">#F57F17</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>
