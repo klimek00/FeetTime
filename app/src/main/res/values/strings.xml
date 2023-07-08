@@ -22,4 +22,9 @@
     <string name="last_message_str">Last message:</string>
     <string name="new_room_str">New room</string>
     <string name="post">Post</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_img_btn">Wybierz zdjęcie</string>
+    <string name="default_nickname">Nickname</string>
+    <string name="defualt_dedscription">Opis profilu</string>
 </resources>

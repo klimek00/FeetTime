@@ -120,7 +120,7 @@ class LoginRegisterFragment : Fragment() {
       addOnSuccessListener {
         Log.d("register", "createUserWithEmail: success")
         FirebaseHandler.RealtimeDatabase.addUser(User(email))
-        findNavController().navigate(R.id.action_navigation_login_to_navigation_home)
+        findNavController().navigate(R.id.action_navigation_login_to_editProfileFragment)
       }
       addOnFailureListener {
         Log.w("register", "createUserWithEmail: failure", it)
