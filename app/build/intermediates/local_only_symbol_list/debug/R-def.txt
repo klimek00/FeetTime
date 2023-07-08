@@ -95,6 +95,7 @@ string create_str
 string default_web_client_id
 string e_mail_label
 string enter_str
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

@@ -1,5 +1,6 @@
 package com.example.firebaseforum.firebase
 
+import android.util.Log
 import com.example.firebaseforum.data.Post
 import com.example.firebaseforum.data.Room
 import com.example.firebaseforum.data.User
@@ -27,7 +28,7 @@ object FirebaseHandler {
     private const val roomLastMessageTimestampPath = "lastMessageTimestamp"
     // Initialize a Firebase database instance using the lazy initialization pattern
     private val firebaseDatabase by lazy {
-      Firebase.database("https://feettime-93b84-default-rtdb.europe-west1.firebasedatabase.app/")
+      Firebase.database("https://feettime-c0e86-default-rtdb.europe-west1.firebasedatabase.app//")
     }
 
     //get reference to the  "users" obj in DB
@@ -48,11 +49,15 @@ object FirebaseHandler {
     }
 
     fun addRoom(room: Room) {
+      Log.d("addRoom", getRoomsReference()::class.java.typeName)
       getRoomsReference().child(room.roomName!!).setValue(room)
     }
     fun addUserRooms(roomName: String) {
       val userUid = Authentication.getUserUid()
+      Log.d("addUserRooms", getRoomsReference()::class.java.typeName)
       userUid?.let {
+        Log.d("addUserRooms uid", userUid)
+        Log.d("addUserRooms roomName", roomName)
         getUsersReference().child(userUid).child(roomName).setValue(true)
       }
     }

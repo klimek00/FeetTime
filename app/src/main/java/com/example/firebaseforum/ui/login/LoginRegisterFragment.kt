@@ -28,7 +28,7 @@ class LoginRegisterFragment : Fragment() {
   private var isLogin = true
 
   private var _binding: FragmentLoginBinding? = null
-  private val binding get() = _binding!!
+
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +51,8 @@ class LoginRegisterFragment : Fragment() {
     setupButtons()
 //    setupEditText()
   }
+
+  private val binding get() = _binding!!
   override fun onDestroyView() {
     super.onDestroyView()
     _binding = null

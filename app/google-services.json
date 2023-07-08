@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "283751912262",
-    "project_id": "fir-forum-9f30a",
-    "storage_bucket": "fir-forum-9f30a.appspot.com"
+    "project_number": "539354091357",
+    "firebase_url": "https://feettime-c0e86-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "feettime-c0e86",
+    "storage_bucket": "feettime-c0e86.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:283751912262:android:d5ded10df1fc99b6878b47",
+        "mobilesdk_app_id": "1:539354091357:android:66ab3bae361aa3c91362b4",
         "android_client_info": {
           "package_name": "com.example.firebaseforum"
         }
       },
       "oauth_client": [
         {
-          "client_id": "283751912262-ngo0llm5qh9tpehgoepq6vneau1moec7.apps.googleusercontent.com",
+          "client_id": "539354091357-mhr8c7plfjjpt5dmqini2uh2t434g0ng.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA_fgQEQliFpCs1dI_8RTHNXgN0QQIM6Og"
+          "current_key": "AIzaSyA7uKvQnsjJu8Jm0dcSk3yV_1vf5r8yDJY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "283751912262-ngo0llm5qh9tpehgoepq6vneau1moec7.apps.googleusercontent.com",
+              "client_id": "539354091357-mhr8c7plfjjpt5dmqini2uh2t434g0ng.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -36,7 +36,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="joe@mainForum" />
+            tools:text="topic" />
 
         <TextView
             android:id="@+id/date"
@@ -51,18 +51,32 @@
             app:layout_constraintTop_toTopOf="@+id/home_item_label"
             tools:text="23.03.2023 17:51" />
 
+        <ImageView
+            android:id="@+id/feetPhoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/decoration"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/post"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/date"
-            app:layout_constraintStart_toStartOf="@+id/home_item_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/feetPhoto"
             app:layout_constraintTop_toBottomOf="@+id/home_item_label"
-            tools:text="My two line\nmessage" />
+            tools:text="My two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messageMy two line messagev" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
