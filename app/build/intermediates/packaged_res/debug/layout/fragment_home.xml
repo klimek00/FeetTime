@@ -22,7 +22,7 @@
         tools:listitem="@layout/home_screen_item" />
 
     <Button
-        android:id="@+id/addFeetBtn"
+        android:id="@+id/feetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"

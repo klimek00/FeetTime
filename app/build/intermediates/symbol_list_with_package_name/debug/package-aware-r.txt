@@ -2977,20 +2977,25 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_editProfileFragment_to_navigation_home
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_navigation_addPhotoFragment_to_navigation_home
 id action_navigation_forums_to_roomFragment
+id action_navigation_home_to_addPhotoFragment
 id action_navigation_home_to_roomFragment
+id action_navigation_login_to_editProfileFragment
 id action_navigation_login_to_navigation_home
 id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addFeetBtn
+id addImage
+id addPhotoFragment
 id add_forum_fab
 id adjust_height
 id adjust_width
@@ -3040,6 +3045,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id changeImg
 id checkbox
 id checked
 id chronometer
@@ -3076,6 +3082,7 @@ id decoration
 id default_activity_button
 id deltaRelative
 id dependency_ordering
+id descriptionInput
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3104,6 +3111,7 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id editProfileFragment
 id edit_query
 id elastic
 id embed
@@ -3115,6 +3123,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id feetBtn
 id feetPhoto
 id fill
 id fill_horizontal
@@ -3161,6 +3170,10 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageDescription
+id imagePreview
+id imageTopic
+id imageView
 id immediateStop
 id included
 id indeterminate
@@ -3271,6 +3284,7 @@ id navigation_login
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id nickEditText
 id noScroll
 id noState
 id none
@@ -3321,6 +3335,7 @@ id room_password
 id rounded
 id row_index_key
 id rtl
+id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3598,6 +3613,8 @@ layout design_text_input_start_icon
 layout dialog_add_room
 layout dialog_room_password
 layout forums_screen_item
+layout fragment_add_photo
+layout fragment_edit_profile
 layout fragment_forums
 layout fragment_home
 layout fragment_login
@@ -3735,7 +3752,11 @@ string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
 string create_str
+string default_image_description
+string default_image_title
+string default_nickname
 string default_web_client_id
+string defualt_dedscription
 string e_mail_label
 string enter_str
 string error_a11y_label
@@ -3752,6 +3773,7 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string invalid_password
@@ -3860,6 +3882,7 @@ string name
 string name_taken
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string new_img_btn
 string new_room_str
 string password_hint
 string password_label

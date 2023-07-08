@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebaseforum.R
@@ -27,7 +28,6 @@ class HomeFragment : Fragment(), ChildEventListener {
     private lateinit var listAdapter: HomeRecyclerViewAdapter
     private var photos: ArrayList<Room> = ArrayList()
     private val invalidRoomNames: ArrayList<String> = ArrayList()
-
 
 
 //    private fun addRoom(room: Room, isFirst: Boolean = false): Int {
@@ -99,6 +99,11 @@ class HomeFragment : Fragment(), ChildEventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.feetBtn.setOnClickListener() {
+            findNavController().navigate(R.id.action_navigation_home_to_addPhotoFragment)
+        }
+
 
 //        binding.root.postDelayed({
 ////            isFirstGet = true

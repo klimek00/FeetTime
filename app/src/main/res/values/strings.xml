@@ -27,4 +27,6 @@
     <string name="new_img_btn">Wybierz zdjęcie</string>
     <string name="default_nickname">Nickname</string>
     <string name="defualt_dedscription">Opis profilu</string>
+    <string name="default_image_title">Tytuł zdjęcia</string>
+    <string name="default_image_description">Opis zdjęcia</string>
 </resources>
