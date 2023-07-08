@@ -34,6 +34,9 @@
             app:destination="@id/navigation_home"
             app:enterAnim="@anim/enter_anim"
             app:exitAnim="@anim/exit_anim" />
+        <action
+            android:id="@+id/action_navigation_login_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/roomFragment"
@@ -43,5 +46,14 @@
         <argument
             android:name="roomName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.firebaseforum.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <action
+            android:id="@+id/action_editProfileFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>
