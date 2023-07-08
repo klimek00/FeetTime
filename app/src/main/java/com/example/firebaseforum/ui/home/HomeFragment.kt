@@ -25,7 +25,7 @@ import com.google.firebase.database.ktx.getValue
 class HomeFragment : Fragment(), ChildEventListener {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var listAdapter: HomeRecyclerViewAdapter
-    private var rooms: ArrayList<Room> = ArrayList()
+    private var photos: ArrayList<Room> = ArrayList()
     private val invalidRoomNames: ArrayList<String> = ArrayList()
 
 

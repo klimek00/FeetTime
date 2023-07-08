@@ -4,6 +4,7 @@ package com.example.firebaseforum.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,16 +27,21 @@ public final class HomeScreenItemBinding implements ViewBinding {
   public final View decoration;
 
   @NonNull
+  public final ImageView feetPhoto;
+
+  @NonNull
   public final TextView homeItemLabel;
 
   @NonNull
   public final TextView post;
 
   private HomeScreenItemBinding(@NonNull CardView rootView, @NonNull TextView date,
-      @NonNull View decoration, @NonNull TextView homeItemLabel, @NonNull TextView post) {
+      @NonNull View decoration, @NonNull ImageView feetPhoto, @NonNull TextView homeItemLabel,
+      @NonNull TextView post) {
     this.rootView = rootView;
     this.date = date;
     this.decoration = decoration;
+    this.feetPhoto = feetPhoto;
     this.homeItemLabel = homeItemLabel;
     this.post = post;
   }
@@ -79,6 +85,12 @@ public final class HomeScreenItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.feetPhoto;
+      ImageView feetPhoto = ViewBindings.findChildViewById(rootView, id);
+      if (feetPhoto == null) {
+        break missingId;
+      }
+
       id = R.id.home_item_label;
       TextView homeItemLabel = ViewBindings.findChildViewById(rootView, id);
       if (homeItemLabel == null) {
@@ -91,7 +103,8 @@ public final class HomeScreenItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new HomeScreenItemBinding((CardView) rootView, date, decoration, homeItemLabel, post);
+      return new HomeScreenItemBinding((CardView) rootView, date, decoration, feetPhoto,
+          homeItemLabel, post);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

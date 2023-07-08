@@ -4,6 +4,7 @@ package com.example.firebaseforum.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,10 +21,15 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final Button addFeetBtn;
+
+  @NonNull
   public final RecyclerView homeList;
 
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull RecyclerView homeList) {
+  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button addFeetBtn,
+      @NonNull RecyclerView homeList) {
     this.rootView = rootView;
+    this.addFeetBtn = addFeetBtn;
     this.homeList = homeList;
   }
 
@@ -54,13 +60,19 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.addFeetBtn;
+      Button addFeetBtn = ViewBindings.findChildViewById(rootView, id);
+      if (addFeetBtn == null) {
+        break missingId;
+      }
+
       id = R.id.home_list;
       RecyclerView homeList = ViewBindings.findChildViewById(rootView, id);
       if (homeList == null) {
         break missingId;
       }
 
-      return new FragmentHomeBinding((ConstraintLayout) rootView, homeList);
+      return new FragmentHomeBinding((ConstraintLayout) rootView, addFeetBtn, homeList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

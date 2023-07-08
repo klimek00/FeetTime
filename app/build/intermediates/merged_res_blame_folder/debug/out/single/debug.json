@@ -1,214 +1,226 @@
 [
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_logout.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_logout.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_login.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_login.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_fragment_forums.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/fragment_forums.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-hdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-mdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_favorite_border.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_favorite_border.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_fragment_room.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\fragment_room.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_room_post.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/room_post.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\anim_enter_anim.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\anim\\enter_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\navigation_mobile_navigation.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\navigation\\mobile_navigation.xml"
     },
     {
         "merged": "com.example.firebaseforum.app-merged_res-54:/layout_fragment_home.xml.flat",
         "source": "com.example.firebaseforum.app-main-56:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_background.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_send.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_send.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-mdpi_ic_launcher_background.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-mdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_fragment_login.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\fragment_login.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/menu/bottom_nav_menu.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_favorite.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_favorite.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxhdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_lock_open.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_lock_open.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_fragment_login.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/fragment_login.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_logout.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_logout.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xhdpi_ic_launcher_background.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-mdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/anim_enter_anim.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/anim/enter_anim.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\anim_item_animation_fall_down.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\anim\\item_animation_fall_down.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/anim_item_animation_fall_down.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/anim/item_animation_fall_down.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_lock.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_lock.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_send.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_send.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\anim_exit_anim.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\anim\\exit_anim.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_dialog_room_password.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/dialog_room_password.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_add.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_add.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_lock.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_lock.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_reply.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_reply.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_btn_default.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\btn_default.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_dialog_add_room.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/dialog_add_room.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_forum.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_forum.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/anim_exit_anim.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/anim/exit_anim.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_favorite.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_favorite.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xhdpi/ic_launcher_foreground.png"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_home.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_home.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_reply.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_reply.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_person.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_person.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-hdpi_ic_launcher_background.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-hdpi/ic_launcher_background.png"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_forum.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_forum.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_btn_default.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/btn_default.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/drawable_ic_favorite_border.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/drawable/ic_favorite_border.xml"
-    },
-    {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "com.example.firebaseforum.app-merged_res-54:/menu_appbar_menu.xml.flat",
         "source": "com.example.firebaseforum.app-main-56:/menu/appbar_menu.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_person.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_person.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_forums_screen_item.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/forums_screen_item.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_dialog_add_room.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\dialog_add_room.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-hdpi/ic_launcher_monochrome.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_add.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_add.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxxhdpi/ic_launcher_background.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/navigation_mobile_navigation.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/navigation/mobile_navigation.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_forums_screen_item.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\forums_screen_item.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_fragment_room.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/fragment_room.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-xxhdpi\\ic_launcher_monochrome.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/xml_backup_rules.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_fragment_forums.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\fragment_forums.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.example.firebaseforum.app-main-56:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/anim_layout_animation_fall_down.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/anim/layout_animation_fall_down.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\menu_appbar_menu.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\menu\\appbar_menu.xml"
     },
     {
-        "merged": "com.example.firebaseforum.app-merged_res-54:/layout_activity_main.xml.flat",
-        "source": "com.example.firebaseforum.app-main-56:/layout/activity_main.xml"
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_room_post.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\room_post.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_home_screen_item.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\home_screen_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_login.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\anim_layout_animation_fall_down.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\anim\\layout_animation_fall_down.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_home.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "com.example.firebaseforum.app-merged_res-54:/layout_home_screen_item.xml.flat",
         "source": "com.example.firebaseforum.app-main-56:/layout/home_screen_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\layout_dialog_room_password.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\layout\\dialog_room_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-merged_res-54:\\drawable_ic_lock_open.xml.flat",
+        "source": "C:\\Users\\torxn\\.gradle\\daemon\\7.5\\com.example.firebaseforum.app-main-56:\\drawable\\ic_lock_open.xml"
     }
 ]

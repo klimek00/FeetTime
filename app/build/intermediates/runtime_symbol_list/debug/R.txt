@@ -2989,6 +2989,7 @@ int id action_text 0x7f080046
 int id actions 0x7f080047
 int id activity_chooser_view_content 0x7f080048
 int id add 0x7f080049
+int id addFeetBtn 0x7f080225
 int id add_forum_fab 0x7f08004a
 int id adjust_height 0x7f08004b
 int id adjust_width 0x7f08004c
@@ -3113,6 +3114,7 @@ int id exitUntilCollapsed 0x7f0800c2
 int id expand_activities_button 0x7f0800c3
 int id expanded_menu 0x7f0800c4
 int id fade 0x7f0800c5
+int id feetPhoto 0x7f080226
 int id fill 0x7f0800c6
 int id fill_horizontal 0x7f0800c7
 int id fill_vertical 0x7f0800c8
@@ -3301,6 +3303,7 @@ int id postLayout 0x7f08017e
 int id post_send_button 0x7f08017f
 int id pressed 0x7f080180
 int id privateSwitch 0x7f080181
+int id profile 0x7f080227
 int id progress_circular 0x7f080182
 int id progress_horizontal 0x7f080183
 int id radio 0x7f080184
