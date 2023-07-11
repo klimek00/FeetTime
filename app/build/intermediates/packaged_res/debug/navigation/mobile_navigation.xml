@@ -39,7 +39,8 @@
             app:exitAnim="@anim/exit_anim" />
         <action
             android:id="@+id/action_navigation_login_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
+            app:destination="@id/editProfileFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/roomFragment"
@@ -58,6 +59,10 @@
         <action
             android:id="@+id/action_editProfileFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <argument
+            android:name="firstRegister"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"

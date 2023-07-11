@@ -20,6 +20,7 @@ color white
 dimen activity_horizontal_margin
 dimen activity_vertical_margin
 drawable btn_default
+drawable feet
 drawable ic_add
 drawable ic_favorite
 drawable ic_favorite_border
@@ -63,7 +64,6 @@ id home_list
 id imageDescription
 id imagePreview
 id imageTopic
-id imageView
 id lastMessageLabel
 id lock
 id login_password
@@ -86,6 +86,7 @@ id postAuthor
 id post_send_button
 id privateSwitch
 id profile
+id profileImg
 id roomFragment
 id room_name
 id room_password

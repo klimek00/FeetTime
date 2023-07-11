@@ -17,22 +17,22 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="464dp"
         android:minHeight="48dp"
-        android:text="@string/default_nickname"
+        android:hint="@string/default_nickname"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profileImg"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/nickEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@drawable/feet" />
 
     <Button
         android:id="@+id/changeImg"
@@ -42,7 +42,8 @@
         android:text="@string/new_img_btn"
         app:layout_constraintBottom_toTopOf="@+id/nickEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toEndOf="@+id/profileImg" />
 
     <ImageButton
         android:id="@+id/saveButton"
@@ -54,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/changeImg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.819"
-        app:layout_constraintStart_toEndOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/profileImg" />
 
     <EditText
         android:id="@+id/descriptionInput"

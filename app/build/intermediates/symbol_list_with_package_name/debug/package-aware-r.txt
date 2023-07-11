@@ -2816,6 +2816,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable feet
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_add
@@ -3173,7 +3174,6 @@ id image
 id imageDescription
 id imagePreview
 id imageTopic
-id imageView
 id immediateStop
 id included
 id indeterminate
@@ -3319,6 +3319,7 @@ id post_send_button
 id pressed
 id privateSwitch
 id profile
+id profileImg
 id progress_circular
 id progress_horizontal
 id radio

@@ -44,6 +44,43 @@ object FirebaseHandler {
       }
     }
 
+    fun addUserDescription(description: String){
+      val userUid = Authentication.getUserUid()
+      userUid?.let {
+        val userRef = getUsersReference().child(userUid).child("description")
+        userRef.setValue(description)
+      }
+    }
+
+    fun addUserNickName(nickname: String){
+      val userUid = Authentication.getUserUid()
+      userUid?.let {
+        val userRef = getUsersReference().child(userUid).child("nickname")
+        userRef.setValue(nickname)
+
+      }
+    }
+
+    fun getUserDescription(): String{
+      var desc: String = ""
+      val userUid = Authentication.getUserUid()
+      userUid?.let {
+        val userRef = getUsersReference().child(userUid).child("description")
+         desc = userRef.get().toString()
+      }
+      return desc
+    }
+
+    fun getUserNickname(): String{
+      var nickname: String = ""
+      val userUid = Authentication.getUserUid()
+      userUid?.let {
+        val userRef = getUsersReference().child(userUid).child("nickname")
+        nickname = userRef.get().toString()
+      }
+      return nickname
+    }
+
     private fun getRoomsReference(): DatabaseReference {
       return firebaseDatabase.reference.child(roomsPath)
     }

@@ -4,7 +4,7 @@
             "outputFile": "com.example.firebaseforum.app-mergeDebugResources-52:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\torxn\\.gradle\\caches\\transforms-3\\399c4b2f25ddff87835eb7bbb25bbde5\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\mateu\\.gradle\\caches\\transforms-3\\399c4b2f25ddff87835eb7bbb25bbde5\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

@@ -5,11 +5,13 @@ import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,11 +19,15 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.firebaseforum.databinding.FragmentEditProfileBinding
+import com.example.firebaseforum.firebase.FirebaseHandler
+import com.google.android.material.snackbar.Snackbar
 
 class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private lateinit var profileImage: AppCompatImageView
+    private lateinit var description: EditText
+    private lateinit var nickname: EditText
     private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -36,17 +42,27 @@ class EditProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        nickname = binding.nickEditText
+        description = binding.descriptionInput
         profileImage = binding.profileImg
-        if(args.firstRegister){
-            profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
-        }
+        if(args.firstRegister) profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
+        else loadData()
 
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }
     }
 
     private fun saveButton() {
-        findNavController().navigate(R.id.action_editProfileFragment_to_navigation_home)
+        if (nickname.text.toString().isEmpty()){
+            Snackbar.make(
+                binding.root, "Nickname nie może być pusty!",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }else {
+            findNavController().navigate(R.id.action_editProfileFragment_to_navigation_home)
+            FirebaseHandler.RealtimeDatabase.addUserNickName(nickname.text.toString())
+            FirebaseHandler.RealtimeDatabase.addUserDescription(description.text.toString())
+        }
     }
 
     private fun pickImage(){
@@ -64,4 +80,10 @@ class EditProfileFragment : Fragment() {
                 profileImage.setImageURI(imgUri)
             }
         }
+
+    private fun loadData(){
+        //TO DO load picture from db
+        nickname.setText(FirebaseHandler.RealtimeDatabase.getUserNickname())
+        description.setText(FirebaseHandler.RealtimeDatabase.getUserDescription())
+    }
 }
