@@ -3,22 +3,26 @@ package com.example.firebaseforum
 import android.app.Activity
 import android.app.Instrumentation.ActivityResult
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.firebaseforum.databinding.FragmentEditProfileBinding
 
 class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
     private lateinit var profileImage: AppCompatImageView
+    private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +37,9 @@ class EditProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         profileImage = binding.profileImg
+        //if(args.firstRegister){
+            profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
+        //}
 
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }

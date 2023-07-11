@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/ic_favorite_border" />
+        tools:src="@drawable/feet" />
 
     <Button
         android:id="@+id/changeImg"
