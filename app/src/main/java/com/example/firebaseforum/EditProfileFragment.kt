@@ -37,9 +37,9 @@ class EditProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         profileImage = binding.profileImg
-        //if(args.firstRegister){
+        if(args.firstRegister){
             profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
-        //}
+        }
 
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }

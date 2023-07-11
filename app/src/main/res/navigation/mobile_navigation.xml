@@ -59,6 +59,10 @@
         <action
             android:id="@+id/action_editProfileFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <argument
+            android:name="firstRegister"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
