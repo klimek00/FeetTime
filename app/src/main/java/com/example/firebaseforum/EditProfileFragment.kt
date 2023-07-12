@@ -3,6 +3,9 @@ package com.example.firebaseforum
 import android.app.Activity
 import android.app.Instrumentation.ActivityResult
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Nickname
@@ -18,17 +21,22 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.firebaseforum.databinding.FragmentEditProfileBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
 import com.google.android.material.snackbar.Snackbar
+import java.util.UUID
 
 class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
-    private lateinit var profileImage: AppCompatImageView
+    //private lateinit var profileImage: AppCompatImageView
+    private lateinit var profileImage: ImageView
     private lateinit var description: EditText
     private lateinit var nickname: EditText
-//    private var uri: Uri? = null
+    private var profileImgChanged: Boolean = false
+    private lateinit var profileUri: Uri
+    private lateinit var  userUid: String
     private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -37,7 +45,7 @@ class EditProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(layoutInflater,container,false)
-
+        userUid = FirebaseHandler.Authentication.getUserUid().toString()
         return binding.root
     }
 
@@ -70,6 +78,7 @@ class EditProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_editProfileFragment_to_navigation_home)
             FirebaseHandler.RealtimeDatabase.addUserNickName(nickname.text.toString())
             FirebaseHandler.RealtimeDatabase.addUserDescription(description.text.toString())
+            FirebaseHandler.RealtimeDatabase.uploadImage(userUid,profileUri)
         }
     }
 
@@ -84,15 +93,16 @@ class EditProfileFragment : Fragment() {
         ){
             if(it.resultCode == Activity.RESULT_OK){
                 val data = it.data
-                val imgUri = data?.data
-                profileImage.setImageURI(imgUri)
-//                uri = data?.data
-//                profileImage.setImageURI(uri)
+                profileUri = data?.data!!
+                profileImage.setImageURI(profileUri)
             }
         }
 
     private fun loadData(){
         //TO DO load picture from db
+        val uri = FirebaseHandler.RealtimeDatabase.getImageStorageRef(userUid)
+        context?.let { Glide.with(it).load(uri).into(profileImage) }
+
         FirebaseHandler.RealtimeDatabase.getNicknameRef().get().addOnSuccessListener {
             nickname.setText(it.value.toString())
         }
