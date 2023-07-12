@@ -37,6 +37,7 @@ class EditProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(layoutInflater,container,false)
+
         return binding.root
     }
 
@@ -46,12 +47,18 @@ class EditProfileFragment : Fragment() {
         nickname = binding.nickEditText
         description = binding.descriptionInput
         profileImage = binding.profileImg
-        if(args.firstRegister) profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
-        else loadData()
+        if(args.firstRegister){
+            profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
+        }
+        else{
+            loadData()
+        }
 
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }
     }
+
+
 
     private fun saveButton() {
         if (nickname.text.toString().isEmpty()){
@@ -86,7 +93,11 @@ class EditProfileFragment : Fragment() {
 
     private fun loadData(){
         //TO DO load picture from db
-        nickname.setText(FirebaseHandler.RealtimeDatabase.getUserNickname())
-        description.setText(FirebaseHandler.RealtimeDatabase.getUserDescription())
+        FirebaseHandler.RealtimeDatabase.getNicknameRef().get().addOnSuccessListener {
+            nickname.setText(it.value.toString())
+        }
+        FirebaseHandler.RealtimeDatabase.getDescriptionRef().get().addOnSuccessListener {
+            description.setText(it.value.toString())
+        }
     }
 }

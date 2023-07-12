@@ -85,24 +85,22 @@ object FirebaseHandler {
       }
     }
 
-    fun getUserDescription(): String{
-      var desc: String = ""
+    fun getDescriptionRef(): DatabaseReference{
+      var userRef: DatabaseReference? = null
       val userUid = Authentication.getUserUid()
       userUid?.let {
-        val userRef = getUsersReference().child(userUid).child("description")
-         desc = userRef.get().toString()
+        userRef = getUsersReference().child(userUid).child("description")
       }
-      return desc
+      return userRef!!
     }
 
-    fun getUserNickname(): String{
-      var nickname: String = ""
+    fun getNicknameRef(): DatabaseReference{
+      var nicknameRef: DatabaseReference? = null
       val userUid = Authentication.getUserUid()
       userUid?.let {
-        val userRef = getUsersReference().child(userUid).child("nickname")
-        nickname = userRef.get().toString()
+        nicknameRef = getUsersReference().child(userUid).child("nickname")
       }
-      return nickname
+      return nicknameRef!!
     }
 
     private fun getRoomsReference(): DatabaseReference {
