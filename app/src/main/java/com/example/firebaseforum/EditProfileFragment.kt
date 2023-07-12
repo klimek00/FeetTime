@@ -28,6 +28,7 @@ class EditProfileFragment : Fragment() {
     private lateinit var profileImage: AppCompatImageView
     private lateinit var description: EditText
     private lateinit var nickname: EditText
+//    private var uri: Uri? = null
     private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -78,6 +79,8 @@ class EditProfileFragment : Fragment() {
                 val data = it.data
                 val imgUri = data?.data
                 profileImage.setImageURI(imgUri)
+//                uri = data?.data
+//                profileImage.setImageURI(uri)
             }
         }
 

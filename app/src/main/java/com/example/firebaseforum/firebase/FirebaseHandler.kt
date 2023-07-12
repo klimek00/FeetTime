@@ -1,10 +1,11 @@
 package com.example.firebaseforum.firebase
 
+import android.net.Uri
 import android.util.Log
 import com.example.firebaseforum.data.Post
 import com.example.firebaseforum.data.Room
 import com.example.firebaseforum.data.User
-import com.example.firebaseforum.ui.home.HomeFragment
+import com.example.firebaseforum.data.Image
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
@@ -14,6 +15,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.util.*
 
 
 object FirebaseHandler {
@@ -26,11 +30,31 @@ object FirebaseHandler {
     private const val roomLastMessagePath = "lastMessage"
     private const val roomLastMessageAuthorPath = "lastMessageAuthor"
     private const val roomLastMessageTimestampPath = "lastMessageTimestamp"
+    private const val imagesPath: String = "images"
+
     // Initialize a Firebase database instance using the lazy initialization pattern
     private val firebaseDatabase by lazy {
       Firebase.database("https://feettime-c0e86-default-rtdb.europe-west1.firebasedatabase.app//")
     }
 
+    private fun getImageStorageRef(filename: String): StorageReference {
+      return FirebaseStorage.getInstance().getReference("$imagesPath/$filename")
+    }
+
+    private fun getImageDatabaseRef(): DatabaseReference {
+      return firebaseDatabase.reference.child(imagesPath)
+    }
+
+    fun addImage(image: Image, uri: Uri?) {
+//      getImageStorageRef(image.filename!!).putFile(uri!!)
+      uploadImage(image.filename!!, uri!!)
+
+      getImageDatabaseRef().child(image.filename).setValue(image)
+    }
+
+    fun uploadImage(filename: String, uri: Uri?) {
+      getImageStorageRef(filename).putFile(uri!!)
+    }
     //get reference to the  "users" obj in DB
     private fun getUsersReference(): DatabaseReference {
       return firebaseDatabase.reference.child(usersPath)
