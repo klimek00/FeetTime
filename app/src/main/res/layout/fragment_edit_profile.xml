@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profileImg"
         android:layout_width="125dp"
         android:layout_height="125dp"

@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.provider.MediaStore
@@ -31,8 +32,7 @@ import java.util.UUID
 class EditProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentEditProfileBinding
-    //private lateinit var profileImage: AppCompatImageView
-    private lateinit var profileImage: ImageView
+    private lateinit var profileImage: AppCompatImageView
     private lateinit var description: EditText
     private lateinit var nickname: EditText
     private var profileImgChanged: Boolean = false
@@ -79,7 +79,9 @@ class EditProfileFragment : Fragment() {
             Log.d("UID: ", userUid)
             FirebaseHandler.RealtimeDatabase.addUserNickName(nickname.text.toString())
             FirebaseHandler.RealtimeDatabase.addUserDescription(description.text.toString())
-            FirebaseHandler.RealtimeDatabase.uploadImage(userUid,profileUri)
+            if(profileImgChanged)
+                FirebaseHandler.RealtimeDatabase.uploadImage(userUid,profileUri)
+
             findNavController().navigate(R.id.action_editProfileFragment_to_navigation_home)
         }
     }
@@ -87,6 +89,7 @@ class EditProfileFragment : Fragment() {
     private fun pickImage(){
         val pickImg = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         changeImage.launch(pickImg)
+        profileImgChanged = true
     }
 
     private val changeImage =
@@ -95,8 +98,13 @@ class EditProfileFragment : Fragment() {
         ){
             if(it.resultCode == Activity.RESULT_OK){
                 val data = it.data
-                profileUri = data?.data!!
-                profileImage.setImageURI(profileUri)
+                //profileUri = data?.data!!
+                val imgUri = data?.data
+                if (imgUri != null) {
+                    profileUri = imgUri
+                }
+                binding.profileImg.setImageURI(imgUri)
+                //profileImage.setImageURI(imgUri)
             }
         }
 
