@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.navigation.fragment.findNavController
 import com.example.firebaseforum.data.Image
 import com.example.firebaseforum.databinding.FragmentAddPhotoBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
@@ -88,12 +89,9 @@ class addPhoto : Fragment() {
           binding.root, "pomyslnie wrzucono!",
           Snackbar.LENGTH_SHORT
         ).show()
+        findNavController().navigate(R.id.action_navigation_addPhotoFragment_to_navigation_home)
       }
     }
-
-
-
-
   }
 
   private val binding get() = _binding!!

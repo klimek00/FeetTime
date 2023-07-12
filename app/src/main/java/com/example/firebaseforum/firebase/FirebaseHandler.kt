@@ -37,8 +37,12 @@ object FirebaseHandler {
       Firebase.database("https://feettime-c0e86-default-rtdb.europe-west1.firebasedatabase.app//")
     }
 
-     fun getImageStorageRef(filename: String): StorageReference {
+    fun getImageStorageRef(filename: String): StorageReference {
       return FirebaseStorage.getInstance().getReference("$imagesPath/$filename")
+    }
+
+    fun getImage(filename: String): StorageReference {
+      return FirebaseStorage.getInstance().getReference(imagesPath).child(filename)
     }
 
     private fun getImageDatabaseRef(): DatabaseReference {

@@ -1,26 +1,25 @@
 package com.example.firebaseforum.ui.home
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebaseforum.R
 import com.example.firebaseforum.data.Room
 import com.example.firebaseforum.databinding.FragmentHomeBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
-import com.example.firebaseforum.helpers.RVItemClickListener
+import com.example.firebaseforum.firebase.FirebaseHandler.RealtimeDatabase.getImage
+import com.example.firebaseforum.firebase.FirebaseHandler.RealtimeDatabase.getImageStorageRef
 import com.example.firebaseforum.ui.forums.ForumsFragmentDirections
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ktx.getValue
 
 
 class HomeFragment : Fragment(), ChildEventListener {
@@ -28,7 +27,11 @@ class HomeFragment : Fragment(), ChildEventListener {
     private lateinit var listAdapter: HomeRecyclerViewAdapter
     private var photos: ArrayList<Room> = ArrayList()
     private val invalidRoomNames: ArrayList<String> = ArrayList()
+    private lateinit var userUID: String
 
+    fun ByteArray.toBitmap(): Bitmap {
+        return BitmapFactory.decodeByteArray(this, 0, this.size)
+    }
 
 //    private fun addRoom(room: Room, isFirst: Boolean = false): Int {
 //        var idx = 0
@@ -99,6 +102,11 @@ class HomeFragment : Fragment(), ChildEventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userUID = FirebaseHandler.Authentication.getUserUid().toString()
+        getImage(userUID).getBytes(4196*4196).addOnSuccessListener {
+            val image = it.toBitmap()
+            binding.tempImage.setImageBitmap(image)
+        }
 
         binding.feetBtn.setOnClickListener() {
             findNavController().navigate(R.id.action_navigation_home_to_addPhotoFragment)
@@ -128,7 +136,6 @@ class HomeFragment : Fragment(), ChildEventListener {
 //        }, 100)
 
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
