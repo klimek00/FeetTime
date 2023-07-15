@@ -109,9 +109,10 @@ class EditProfileFragment : Fragment() {
         }
 
     private fun loadData(){
-        //TO DO load picture from db
-        val uri = FirebaseHandler.RealtimeDatabase.getImageStorageRef(userUid)
-        context?.let { Glide.with(it).load(uri).into(profileImage) }
+        FirebaseHandler.RealtimeDatabase.getImage(userUid).getBytes(4196*4196).addOnSuccessListener {
+            val image = it.toBitmap()
+            profileImage.setImageBitmap(image)
+        }
 
         FirebaseHandler.RealtimeDatabase.getNicknameRef().get().addOnSuccessListener {
             nickname.setText(it.value.toString())
@@ -119,5 +120,9 @@ class EditProfileFragment : Fragment() {
         FirebaseHandler.RealtimeDatabase.getDescriptionRef().get().addOnSuccessListener {
             description.setText(it.value.toString())
         }
+    }
+
+    private fun ByteArray.toBitmap(): Bitmap {
+        return BitmapFactory.decodeByteArray(this, 0, this.size)
     }
 }
