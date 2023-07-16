@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     //visible depending on if user is in navigation login
     menu?.findItem(R.id.logout)?.isVisible = navDestination.id != R.id.navigation_login
+    menu?.findItem(R.id.profile)?.isVisible = navDestination.id != R.id.navigation_login
 
 
     return super.onPrepareOptionsMenu(menu)
