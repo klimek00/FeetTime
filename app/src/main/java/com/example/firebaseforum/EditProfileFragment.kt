@@ -65,6 +65,13 @@ class EditProfileFragment : Fragment() {
 
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }
+        binding.toProfile.setOnClickListener {
+            //val action = EditProfileFragmentDirections.actionEditProfileFragmentToUserProfileFragment(userUid)
+            //findNavController().navigate(action)
+            FirebaseHandler.RealtimeDatabase.getImagesReference().get().addOnSuccessListener {
+
+            }
+        }
     }
 
 

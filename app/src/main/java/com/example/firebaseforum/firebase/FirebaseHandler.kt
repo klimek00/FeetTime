@@ -64,6 +64,11 @@ object FirebaseHandler {
     private fun getUsersReference(): DatabaseReference {
       return firebaseDatabase.reference.child(usersPath)
     }
+
+    fun getImagesReference(): DatabaseReference{
+      return firebaseDatabase.reference.child(imagesPath)
+    }
+
     //function to add new user to DB
     fun addUser(user: User) {
       val userUid = Authentication.getUserUid()
@@ -99,6 +104,12 @@ object FirebaseHandler {
       return userRef!!
     }
 
+    fun getPhotoDescriptionRef(photoId: String): DatabaseReference{
+      var descRef: DatabaseReference? = null
+      descRef = getImagesReference().child(photoId).child("description")
+      return descRef
+    }
+
     fun getNicknameRef(): DatabaseReference{
       var nicknameRef: DatabaseReference? = null
       val userUid = Authentication.getUserUid()
@@ -106,6 +117,12 @@ object FirebaseHandler {
         nicknameRef = getUsersReference().child(userUid).child("nickname")
       }
       return nicknameRef!!
+    }
+
+    fun getOtherUserNicknameRef(userUid: String): DatabaseReference{
+      var nicknameRef: DatabaseReference? = null
+      nicknameRef = getUsersReference().child(userUid).child("nickname")
+      return nicknameRef
     }
 
     private fun getRoomsReference(): DatabaseReference {

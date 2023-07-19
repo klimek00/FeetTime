@@ -57,12 +57,16 @@
         android:label="EditProfileFragment"
         tools:layout="@layout/fragment_edit_profile">
         <action
+            android:id="@+id/action_editProfileFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+        <action
             android:id="@+id/action_editProfileFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
         <argument
             android:name="firstRegister"
             app:argType="boolean"
             android:defaultValue="false" />
+
     </fragment>
     <fragment
         android:id="@+id/addPhotoFragment"
@@ -75,5 +79,14 @@
         <action
             android:id="@+id/action_navigation_addPhotoFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.firebaseforum.UserProfileFragment"
+        android:label="fragment_user_profile_list"
+        tools:layout="@layout/fragment_user_profile_list" >
+        <argument
+            android:name="otherUserID"
+            app:argType="string" />
     </fragment>
 </navigation>
