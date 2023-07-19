@@ -7,133 +7,125 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebaseforum.R
 import com.example.firebaseforum.data.Room
+import com.example.firebaseforum.data.User
 import com.example.firebaseforum.databinding.FragmentHomeBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
+import com.example.firebaseforum.firebase.FirebaseHandler.RealtimeDatabase.addRoom
 import com.example.firebaseforum.firebase.FirebaseHandler.RealtimeDatabase.getImage
 import com.example.firebaseforum.firebase.FirebaseHandler.RealtimeDatabase.getImageStorageRef
+import com.example.firebaseforum.helpers.RVItemClickListener
 import com.example.firebaseforum.ui.forums.ForumsFragmentDirections
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ktx.getValue
 
 
 class HomeFragment : Fragment(), ChildEventListener {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var listAdapter: HomeRecyclerViewAdapter
-    private var photos: ArrayList<Room> = ArrayList()
-    private val invalidRoomNames: ArrayList<String> = ArrayList()
+    private var users: ArrayList<User> = ArrayList()
+//    private val invalidRoomNames: ArrayList<String> = ArrayList()
     private lateinit var userUID: String
 
-    fun ByteArray.toBitmap(): Bitmap {
-        return BitmapFactory.decodeByteArray(this, 0, this.size)
+//    fun ByteArray.toBitmap(): Bitmap {
+//        return BitmapFactory.decodeByteArray(this, 0, this.size)
+//    }
+
+    private fun addUser(user: User, isFirst: Boolean = false): Int {
+        var idx = 0
+
+        if (!isFirst) {
+            for ((i, existingUser) in users.withIndex()) {
+                idx = i + 1
+            }
+        }
+        users.add(idx, user)
+
+        return idx
     }
 
-//    private fun addRoom(room: Room, isFirst: Boolean = false): Int {
-//        var idx = 0
-//
-//        // If the new room is not the first room in the list, find the appropriate index for it based
-//        // on its timestamp.
-//        // The newest items (with higher timestamp) are at the front of the list
-//        if (!isFirst) {
-//            for ((i, existingRoom) in rooms.withIndex()) {
-//                if (room.lastMessageTimestamp!! >= existingRoom.lastMessageTimestamp!!) {
-//                    idx = i
-//                    break
-//                } else {
-//                    idx = i + 1
-//                }
-//            }
-//        }
-//        invalidRoomNames.add(idx, room.roomName!!)
-//        rooms.add(idx, room)
-//
-//        return idx
-//    }
+    private val listItemClickListener: RVItemClickListener = object : RVItemClickListener {
+        override fun onItemClick(position: Int) {
+            val user = users[position]
+            user.nickname?.let {
+                val navigateToRoomFragmentAction = ForumsFragmentDirections.actionNavigationForumsToRoomFragment(it)
+                findNavController().navigate(navigateToRoomFragmentAction)
+            }
+        }
+    }
 
-//    private val listItemClickListener: RVItemClickListener = object : RVItemClickListener {
-//        override fun onItemClick(position: Int) {
-//            val room = rooms[position]
-//            room.roomName?.let {
-//                if (room.isPrivate == false ||
-//                    room.ownerEmail == FirebaseHandler.Authentication.getUserEmail()) {
-//                    val navigateToRoomFragmentAction = ForumsFragmentDirections.actionNavigationForumsToRoomFragment(it)
-//                    findNavController().navigate(navigateToRoomFragmentAction)
-//                } else {
-////                    showPasswordDialog(position)
-//                    Log.d("tag", "position: ${position}")
-//                }
-//            }
-//        }
-//    }
+    private fun setupRecyclerView() {
+        //create adapter with onclicklistener
+        listAdapter = HomeRecyclerViewAdapter(listItemClickListener)
+        with(binding.homeList) {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = listAdapter
+        }
+    }
+    private fun showList(users: List<User>, position: Int = -1) {
+        binding.homeList.visibility = View.INVISIBLE
 
-//    private fun setupRecyclerView() {
-//        //create adapter with onclicklistener
-//        listAdapter = HomeRecyclerViewAdapter(listItemClickListener)
-//        with(binding.homeList) {
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = listAdapter
-//        }
-//    }
-//    private fun showList(rooms: List<Room>, position: Int = -1) {
-//        binding.homeList.visibility = View.INVISIBLE
-//
-//        binding.root.postDelayed({
-//            binding.homeList.visibility = View.VISIBLE
-//            val animation: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(
-//                requireContext(), R.anim.layout_animation_fall_down
-//            )
-//            binding.homeList.layoutAnimation = animation
-//            binding.homeList.scheduleLayoutAnimation()
-//            listAdapter.submitList(rooms)
-//
-//            listAdapter.submitList(rooms)
-//            if (position != -1) {
-//                listAdapter.notifyDataSetChanged()
-//            }
-//
-//            binding.homeList.smoothScrollToPosition(0)
-//        }, 50)
-//    }
+        binding.root.postDelayed({
+            binding.homeList.visibility = View.VISIBLE
+            val animation: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(
+                requireContext(), R.anim.layout_animation_fall_down
+            )
+            binding.homeList.layoutAnimation = animation
+            binding.homeList.scheduleLayoutAnimation()
+
+            listAdapter.submitList(users)
+            if (position != -1) {
+                listAdapter.notifyDataSetChanged()
+            }
+
+            binding.homeList.smoothScrollToPosition(0)
+        }, 50)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userUID = FirebaseHandler.Authentication.getUserUid().toString()
-        getImage(userUID).getBytes(4196*4196).addOnSuccessListener {
-            val image = it.toBitmap()
-            binding.tempImage.setImageBitmap(image)
-        }
+//        userUID = FirebaseHandler.Authentication.getUserUid().toString()
+
+        /**
+         * todo: odswiez przy zmianie
+         */
 
         binding.feetBtn.setOnClickListener() {
             findNavController().navigate(R.id.action_navigation_home_to_addPhotoFragment)
         }
 
 
-//        binding.root.postDelayed({
-////            isFirstGet = true
-////            setupButtons()
-//            setupRecyclerView()
-//
-//            FirebaseHandler.RealtimeDatabase.getRooms().addOnSuccessListener {
-//                for (child in it.children) {
-//                    val roomFromDB = child.getValue<Room>()
-//                    Log.d("tagggg:", "${roomFromDB?.ownerEmail == FirebaseHandler.Authentication.getUserEmail()}, ${roomFromDB?.ownerEmail}, ${FirebaseHandler.Authentication.getUserEmail()}")
-//
-//                    if (roomFromDB?.ownerEmail == FirebaseHandler.Authentication.getUserEmail()) {
-//                        roomFromDB?.let {
-//                            addRoom(roomFromDB)
-//                        }
-//                    }
-//                }
-//                showList(rooms)
-//                FirebaseHandler.RealtimeDatabase.listenToRoomsReference(this@HomeFragment)
-//            }
-//
-//        }, 100)
+        binding.root.postDelayed({
+            if (!FirebaseHandler.Authentication.isLoggedIn()) {
+                return@postDelayed
+            }
+//            isFirstGet = true
+//            setupButtons()
+            setupRecyclerView()
+
+            FirebaseHandler.RealtimeDatabase.getUsers().addOnSuccessListener {
+                for (child in it.children) {
+                    val userFromDB = child.getValue<User>()?.apply { uid = child.key} ?: break
+
+//                    Log.d("tagggg:", "${userFromDB?.nickname}, ${FirebaseHandler.Authentication.getUserEmail()}, userid: $userFromDB, child: ${child.key}")
+
+                    userFromDB?.let {
+                        addUser(userFromDB)
+                    }
+                }
+                showList(users)
+                FirebaseHandler.RealtimeDatabase.listenToUsersReference(this@HomeFragment)
+            }
+
+        }, 100)
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.firebaseforum.firebase
 
 import android.net.Uri
+import android.provider.ContactsContract.Data
 import android.util.Log
 import com.example.firebaseforum.data.Post
 import com.example.firebaseforum.data.Room
@@ -129,14 +130,37 @@ object FirebaseHandler {
       return getRoomsReference().get()
     }
 
-    //getRoomsReference - path to room
-    fun listenToRoomsReference(listener: ChildEventListener) {
-      getRoomsReference().addChildEventListener(listener)
+    fun getUsers(): Task<DataSnapshot> {
+      return getUsersReference().get()
     }
 
-    fun stopListeningToRoomsRef(listener: ChildEventListener) {
-      getRoomsReference().removeEventListener(listener)
+    fun getOtherUserElement(userUid: String, element: String): DatabaseReference? {
+      var userRef: DatabaseReference? = null
+      userUid?.let {
+        userRef = getUsersReference().child(userUid).child(element)
+      }
+      return userRef!!
     }
+    fun getOtherUserUID(username: String): String {
+      return username
+    }
+
+    //getRoomsReference - path to room
+//    fun listenToRoomsReference(listener: ChildEventListener) {
+//      getRoomsReference().addChildEventListener(listener)
+//    }
+//
+//    fun stopListeningToRoomsRef(listener: ChildEventListener) {
+//      getRoomsReference().removeEventListener(listener)
+//    }
+
+    fun listenToUsersReference(listener: ChildEventListener) {
+      getUsersReference().addChildEventListener(listener)
+    }
+    fun stopListeningToUsersRef(listener: ChildEventListener) {
+      getUsersReference().removeEventListener(listener)
+    }
+
 
     ///
       // MESSAGES
@@ -208,6 +232,7 @@ object FirebaseHandler {
     fun getUserUid():String?{
       return firebaseAuth.currentUser?.uid
     }
+
     // Check if there is a current user logged in
     fun isLoggedIn(): Boolean {
       return firebaseAuth.currentUser != null
