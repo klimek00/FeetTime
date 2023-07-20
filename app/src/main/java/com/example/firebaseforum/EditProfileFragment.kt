@@ -27,6 +27,10 @@ import com.bumptech.glide.Glide
 import com.example.firebaseforum.databinding.FragmentEditProfileBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import java.util.UUID
 
 class EditProfileFragment : Fragment() {
@@ -66,11 +70,8 @@ class EditProfileFragment : Fragment() {
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }
         binding.toProfile.setOnClickListener {
-            //val action = EditProfileFragmentDirections.actionEditProfileFragmentToUserProfileFragment(userUid)
-            //findNavController().navigate(action)
-            FirebaseHandler.RealtimeDatabase.getImagesReference().get().addOnSuccessListener {
-
-            }
+            val action = EditProfileFragmentDirections.actionEditProfileFragmentToUserProfileFragment(userUid)
+            findNavController().navigate(action)
         }
     }
 
