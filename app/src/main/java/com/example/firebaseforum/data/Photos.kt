@@ -14,6 +14,7 @@ import java.util.ArrayList
 object Photos {
 
     val ITEMS: MutableList<UserPhotos> = ArrayList()
+    var iterator: Int = 0
 
     private val COUNT = 10
 
@@ -23,7 +24,20 @@ object Photos {
 
     fun clearData(){
         ITEMS.clear()
+        iterator = 0
     }
+
+    fun getNextElement(): String? {
+        var photoID: String? = null
+        photoID = ITEMS[iterator].photoID
+        iterator += 1
+        return photoID
+    }
+
+    fun ableToDownload(): Boolean{
+        return iterator < ITEMS.size
+    }
+
 }
 
 data class UserPhotos(val userID: String, val photoID: String): Parcelable{

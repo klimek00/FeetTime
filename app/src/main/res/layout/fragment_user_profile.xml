@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/photo"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +28,7 @@
             android:id="@+id/prof_desc_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="64dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,8 +40,10 @@
             android:id="@+id/profile_nickname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="8dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/prof_desc_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

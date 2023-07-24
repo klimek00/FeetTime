@@ -16,7 +16,12 @@ import org.w3c.dom.Text
 
 
 class UserProfileRecyclerViewAdapter(
-    private val values: List<UserPhotos>
+    private val values: List<UserPhotos>,
+    private val photos: ArrayList<Bitmap>,
+    private val titles: ArrayList<String>,
+    private val descriptions: ArrayList<String>,
+    private val username: String,
+    private val profileDesc: String
 ) : RecyclerView.Adapter<UserProfileRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,19 +38,21 @@ class UserProfileRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        if(position != 0)
-            holder.nickname.visibility = View.GONE
-        else {
-            FirebaseHandler.RealtimeDatabase.getOtherUserNicknameRef(item.userID).get().addOnSuccessListener {
-                holder.nickname.text = it.value.toString()
+        if(position == 0) {
+            if (username != "loading"){
+                holder.nickname.text = username
+                holder.description.text = profileDesc
+                holder.image.setImageBitmap(photos[position])
+            }else {
+                holder.nickname.text = username
+                holder.description.text = profileDesc
+                //holder.image.setImageBitmap(photos[position])
             }
         }
-        FirebaseHandler.RealtimeDatabase.getPhotoDescriptionRef(item.photoID).get().addOnSuccessListener {
-            holder.description.text = it.value.toString()
-        }
-        FirebaseHandler.RealtimeDatabase.getImage(item.photoID).getBytes(4196*4196).addOnSuccessListener{
-            val image = it.toBitmap()
-            holder.image.setImageBitmap(image)
+        else {
+            holder.image.setImageBitmap(photos[position])
+            holder.description.text = descriptions[position]
+            holder.nickname.text = titles[position]
         }
     }
 
