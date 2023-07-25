@@ -2,21 +2,19 @@ package com.example.firebaseforum
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.media.Image
+import android.graphics.Matrix
 import android.os.Bundle
-import android.provider.ContactsContract.Contacts.Photo
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.addCallback
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.firebaseforum.data.PhotoToDisplay
 import com.example.firebaseforum.data.Photos
 import com.example.firebaseforum.data.UserPhotos
-import com.example.firebaseforum.databinding.FragmentUserProfileBinding
 import com.example.firebaseforum.databinding.FragmentUserProfileListBinding
 import com.example.firebaseforum.firebase.FirebaseHandler
 import com.google.firebase.database.DataSnapshot
@@ -32,7 +30,7 @@ import java.lang.Exception
 /**
  * A fragment representing a list of Items.
  */
-class UserProfileFragment : Fragment() {
+class UserProfileFragment : Fragment(), ToDoListener {
     private lateinit var binding: FragmentUserProfileListBinding
     private val args: UserProfileFragmentArgs by navArgs()
     private val photos: ArrayList<Bitmap> = ArrayList()
@@ -40,6 +38,13 @@ class UserProfileFragment : Fragment() {
     private val descriptions: ArrayList<String> = ArrayList()
     private lateinit var username: String
     private lateinit var profileDesc: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            findNavController().navigate(R.id.navigation_forums)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,7 +59,7 @@ class UserProfileFragment : Fragment() {
             Photos.clearData()
             clearData()
             getPhotosData(args.otherUserID)
-            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS, photos, titles, descriptions, username, profileDesc)
+            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS, photos, titles, descriptions, username, profileDesc, this@UserProfileFragment)
         }
         return binding.root
     }
@@ -105,7 +110,10 @@ class UserProfileFragment : Fragment() {
     private fun loadPhoto(){
         if(Photos.ableToDownload()){
             FirebaseHandler.RealtimeDatabase.getImage(Photos.getNextElement().toString()).getBytes(4196*4196).addOnSuccessListener {
-                val image = it.toBitmap()
+                var image = it.toBitmap()
+                /*val matrix = Matrix()
+                matrix.postRotate(90.0f)
+                image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)*/
                 photos.add(image)
                 loadPhoto()
             }
@@ -132,7 +140,7 @@ class UserProfileFragment : Fragment() {
     private fun loadAdapter(){
         with(binding.list){
             layoutManager = LinearLayoutManager(context)
-            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS,photos,titles,descriptions, username, profileDesc)
+            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS,photos,titles,descriptions, username, profileDesc, this@UserProfileFragment)
         }
     }
 
@@ -145,6 +153,13 @@ class UserProfileFragment : Fragment() {
 
     private fun ByteArray.toBitmap(): Bitmap {
         return BitmapFactory.decodeByteArray(this, 0, this.size)
+    }
+
+    override fun onItemClick(position: Int) {
+        val action = UserProfileFragmentDirections.actionUserProfileFragmentToDisplayPhotoFragment(
+            PhotoToDisplay(username,photos[position],args.otherUserID)
+        )
+        findNavController().navigate(action)
     }
 
 }

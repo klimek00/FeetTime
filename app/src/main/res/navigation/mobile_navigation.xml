@@ -88,5 +88,20 @@
         <argument
             android:name="otherUserID"
             app:argType="string" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_displayPhotoFragment"
+            app:destination="@id/displayPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayPhotoFragment"
+        android:name="com.example.firebaseforum.DisplayPhotoFragment"
+        android:label="fragment_display_photo"
+        tools:layout="@layout/fragment_display_photo" >
+        <argument
+            android:name="photo"
+            app:argType="com.example.firebaseforum.data.PhotoToDisplay" />
+        <action
+            android:id="@+id/action_displayPhotoFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
 </navigation>

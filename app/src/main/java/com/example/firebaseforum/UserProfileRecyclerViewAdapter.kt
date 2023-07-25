@@ -11,9 +11,6 @@ import android.widget.TextView
 
 import com.example.firebaseforum.data.UserPhotos
 import com.example.firebaseforum.databinding.FragmentUserProfileBinding
-import com.example.firebaseforum.firebase.FirebaseHandler
-import org.w3c.dom.Text
-
 
 class UserProfileRecyclerViewAdapter(
     private val values: List<UserPhotos>,
@@ -21,7 +18,8 @@ class UserProfileRecyclerViewAdapter(
     private val titles: ArrayList<String>,
     private val descriptions: ArrayList<String>,
     private val username: String,
-    private val profileDesc: String
+    private val profileDesc: String,
+    private val eventListener: ToDoListener
 ) : RecyclerView.Adapter<UserProfileRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -50,10 +48,14 @@ class UserProfileRecyclerViewAdapter(
             }
         }
         else {
-            holder.image.setImageBitmap(photos[position])
-            holder.description.text = descriptions[position]
-            holder.nickname.text = titles[position]
+            if(photos.size>0 && position<photos.size) {
+                holder.image.setImageBitmap(photos[position])
+                holder.description.text = descriptions[position]
+                holder.nickname.text = titles[position]
+                holder.container.setOnClickListener { eventListener.onItemClick(position) }
+            }
         }
+
     }
 
     override fun getItemCount(): Int = values.size
