@@ -29,4 +29,10 @@
     <string name="defualt_dedscription">Opis profilu</string>
     <string name="default_image_title">Tytuł zdjęcia</string>
     <string name="default_image_description">Opis zdjęcia</string>
+    <string name="default_money_text">Twoje środki:</string>
+    <string name="cost_hint">Koszt subskrypcji twojego profilu</string>
+    <string name="cost_label">Koszt subskrypcji</string>
+    <string name="add_money">Doładuj</string>
+    <string name="default_money">0</string>
+    <string name="send_money_button">Prześlij</string>
 </resources>

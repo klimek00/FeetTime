@@ -42,7 +42,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
-            findNavController().navigate(R.id.navigation_forums)
+            findNavController().navigate(R.id.navigation_home)
         }
     }
     override fun onCreateView(

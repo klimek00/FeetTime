@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.navigation_login)
       }
       R.id.profile -> {
-        findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.userProfileFragment)
+        findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.editProfileFragment)
       }
     }
     return super.onOptionsItemSelected(item)

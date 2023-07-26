@@ -16,8 +16,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,6 +45,11 @@ class EditProfileFragment : Fragment() {
     private var profileImgChanged: Boolean = false
     private lateinit var profileUri: Uri
     private lateinit var  userUid: String
+    private lateinit var subCost: EditText
+    private lateinit var newMoney: EditText
+    private lateinit var addMoney: Button
+    private lateinit var sendMoney: Button
+    private lateinit var moneyValue: TextView
     private val args: EditProfileFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,6 +75,12 @@ class EditProfileFragment : Fragment() {
         nickname = binding.nickEditText
         description = binding.descriptionInput
         profileImage = binding.profileImg
+        subCost = binding.subCost
+        newMoney = binding.newMoney
+        addMoney = binding.addMoney
+        sendMoney = binding.sendMoney
+        moneyValue = binding.moneyValue
+
         if(args.firstRegister){
             profileImage.setImageDrawable(resources.getDrawable(R.drawable.feet))
         }
@@ -75,15 +88,31 @@ class EditProfileFragment : Fragment() {
             loadData()
         }
 
+        addMoney.visibility = View.VISIBLE
+        newMoney.visibility = View.GONE
+        sendMoney.visibility = View.GONE
         binding.saveButton.setOnClickListener { saveButton() }
         binding.changeImg.setOnClickListener { pickImage() }
-        binding.toProfile.setOnClickListener {
-            val action = EditProfileFragmentDirections.actionEditProfileFragmentToUserProfileFragment(userUid)
-            findNavController().navigate(action)
-        }
+        addMoney.setOnClickListener { addMoneyButton() }
+        sendMoney.setOnClickListener { sendMoneyButton() }
     }
 
-
+    private fun sendMoneyButton(){
+        FirebaseHandler.RealtimeDatabase.getUserMoneyRef(userUid).get().addOnSuccessListener {
+            val oldMoney = it.value
+            var money: Int = oldMoney.toString().toInt() + newMoney.text.toString().toInt()
+            FirebaseHandler.RealtimeDatabase.setUserMoney(userUid,money)
+            moneyValue.text = money.toString()
+            addMoney.visibility = View.VISIBLE
+            newMoney.visibility = View.GONE
+            sendMoney.visibility = View.GONE
+        }
+    }
+    private fun addMoneyButton(){
+        addMoney.visibility = View.GONE
+        newMoney.visibility = View.VISIBLE
+        sendMoney.visibility = View.VISIBLE
+    }
 
     private fun saveButton() {
         if (nickname.text.toString().isEmpty()){
@@ -95,6 +124,8 @@ class EditProfileFragment : Fragment() {
             Log.d("UID: ", userUid)
             FirebaseHandler.RealtimeDatabase.addUserNickName(nickname.text.toString())
             FirebaseHandler.RealtimeDatabase.addUserDescription(description.text.toString())
+            if(!subCost.text.isEmpty())
+                FirebaseHandler.RealtimeDatabase.setSubscriptionCost(subCost.text.toString().toInt())
             if(profileImgChanged)
                 FirebaseHandler.RealtimeDatabase.uploadImage(userUid,profileUri)
 
@@ -133,8 +164,17 @@ class EditProfileFragment : Fragment() {
         FirebaseHandler.RealtimeDatabase.getNicknameRef().get().addOnSuccessListener {
             nickname.setText(it.value.toString())
         }
+
         FirebaseHandler.RealtimeDatabase.getDescriptionRef().get().addOnSuccessListener {
             description.setText(it.value.toString())
+        }
+
+        FirebaseHandler.RealtimeDatabase.getUserMoneyRef(userUid).get().addOnSuccessListener {
+            moneyValue.text = it.value.toString()
+        }
+
+        FirebaseHandler.RealtimeDatabase.getSubscriptionCostRef(userUid).get().addOnSuccessListener {
+            subCost.setText(it.value.toString())
         }
     }
 

@@ -121,6 +121,12 @@ class LoginRegisterFragment : Fragment() {
         Log.d("register", "createUserWithEmail: success")
         FirebaseHandler.RealtimeDatabase.addUser(User(email))
         //val action = LoginRegisterFragmentDirections.actionNavigationLoginToEditProfileFragment(true)
+        val userUid = FirebaseHandler.Authentication.getUserUid()
+        if (userUid != null){
+          FirebaseHandler.RealtimeDatabase.setUserMoney(userUid,0)
+          FirebaseHandler.RealtimeDatabase.setUserMoney(userUid,0)
+        }
+
         val action = LoginRegisterFragmentDirections.actionNavigationLoginToEditProfileFragment(firstRegister = true)
         findNavController().navigate(action)
       }

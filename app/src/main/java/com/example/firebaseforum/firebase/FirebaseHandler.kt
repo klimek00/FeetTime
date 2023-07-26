@@ -95,6 +95,29 @@ object FirebaseHandler {
       }
     }
 
+    fun setUserMoney(userUid: String, money: Int){
+      val userRef = getUsersReference().child(userUid).child("money")
+      userRef.setValue(money)
+    }
+
+    fun getUserMoneyRef(userUid: String): DatabaseReference{
+      var moneyRef: DatabaseReference? = null
+      moneyRef = getUsersReference().child(userUid).child("money")
+      return moneyRef
+    }
+
+    fun setSubscriptionCost(money: Int){
+      val userUid = Authentication.getUserUid()
+      val subCostRef = getUsersReference().child(userUid!!).child("sub_cost")
+      subCostRef.setValue(money)
+    }
+
+    fun getSubscriptionCostRef(userUid: String): DatabaseReference{
+      var subRef: DatabaseReference? = null
+      subRef = getUsersReference().child(userUid).child("sub_cost")
+      return subRef
+    }
+
     fun getDescriptionRef(): DatabaseReference{
       var userRef: DatabaseReference? = null
       val userUid = Authentication.getUserUid()
