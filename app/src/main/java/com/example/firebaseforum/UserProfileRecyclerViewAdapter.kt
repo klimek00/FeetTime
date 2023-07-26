@@ -19,7 +19,9 @@ class UserProfileRecyclerViewAdapter(
     private val descriptions: ArrayList<String>,
     private val username: String,
     private val profileDesc: String,
-    private val eventListener: ToDoListener
+    private val eventListener: ToDoListener,
+    private val forSubscribers: ArrayList<Boolean>,
+    private val isSubscribed: Boolean
 ) : RecyclerView.Adapter<UserProfileRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,12 +50,20 @@ class UserProfileRecyclerViewAdapter(
             }
         }
         else {
-            if(photos.size>0 && position<photos.size) {
-                holder.image.setImageBitmap(photos[position])
-                holder.description.text = descriptions[position]
-                holder.nickname.text = titles[position]
-                holder.container.setOnClickListener { eventListener.onItemClick(position) }
-            }
+            //if (forSubscribers[position] && !isSubscribed){
+                if(photos.size>0 && position<photos.size) {
+                    holder.image.setImageBitmap(photos[position])
+                    holder.description.text = descriptions[position]
+                    holder.nickname.text = titles[position]
+                }
+            /*}else {
+                if (photos.size > 0 && position < photos.size) {
+                    holder.image.setImageBitmap(photos[position])
+                    holder.description.text = descriptions[position]
+                    holder.nickname.text = titles[position]
+                    holder.container.setOnClickListener { eventListener.onItemClick(position) }
+                }
+            }*/
         }
 
     }

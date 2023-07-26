@@ -20,24 +20,19 @@ import com.example.firebaseforum.firebase.FirebaseHandler
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 
-/**
- * A fragment representing a list of Items.
- */
 class UserProfileFragment : Fragment(), ToDoListener {
     private lateinit var binding: FragmentUserProfileListBinding
     private val args: UserProfileFragmentArgs by navArgs()
     private val photos: ArrayList<Bitmap> = ArrayList()
     private val titles: ArrayList<String> = ArrayList()
     private val descriptions: ArrayList<String> = ArrayList()
+    private val forSubscribers: ArrayList<Boolean> = ArrayList()
     private lateinit var username: String
     private lateinit var profileDesc: String
+    private lateinit var userID: String
+    private var subCost: Int = 0
+    private var isSubscribed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +47,15 @@ class UserProfileFragment : Fragment(), ToDoListener {
         binding = FragmentUserProfileListBinding.inflate(inflater,container,false)
         username = "loading"
         profileDesc = "loading"
-
+        userID = FirebaseHandler.Authentication.getUserUid().toString()
         // Set the adapter
         with(binding.list){
             layoutManager = LinearLayoutManager(context)
             Photos.clearData()
             clearData()
+            checkSubscription()
             getPhotosData(args.otherUserID)
-            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS, photos, titles, descriptions, username, profileDesc, this@UserProfileFragment)
+            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS, photos, titles, descriptions, username, profileDesc, this@UserProfileFragment, forSubscribers, isSubscribed)
         }
         return binding.root
     }
@@ -69,6 +65,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
         var ownerID: String? = null
         var title: String? = null
         var description: String? = null
+        var private: Boolean = false
         Photos.addItem(
             UserPhotos(userID, userID)
         )
@@ -89,12 +86,15 @@ class UserProfileFragment : Fragment(), ToDoListener {
                                 )
                             }
                         }
+                        if (data.key == "private")
+                            private = data.value.toString().toBoolean()
                         if (data.key == "title")
                             title = data.value.toString()
                     }
                     if (ownerID == userID){
                         titles.add(title.toString())
                         descriptions.add(description.toString())
+                        forSubscribers.add(private)
                     }
                 }
                loadPhoto()
@@ -109,26 +109,95 @@ class UserProfileFragment : Fragment(), ToDoListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (args.otherUserID == FirebaseHandler.Authentication.getUserUid()) {
+        if (args.otherUserID == userID) {
             binding.feetBtn.setOnClickListener() {
+                binding.feetBtn.text = "Dodaj Stopę"
                 findNavController().navigate(R.id.action_userProfileFragment_to_addPhotoFragment)
             }
-            binding.feetBtn.visibility = View.VISIBLE
         } else {
-            binding.feetBtn.visibility = View.INVISIBLE
+            setSubButtonText()
+            binding.feetBtn.setOnClickListener{
+                subscribe()
+            }
+        }
+    }
+
+    private fun checkSubscription(){
+        FirebaseHandler.RealtimeDatabase.getListOfSubsRef(userID).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(sub in snapshot.children){
+                    if(sub.key.toString()==args.otherUserID) {
+                        isSubscribed = true
+                        binding.feetBtn.visibility = View.GONE
+                    }
+                }
+                //getPhotosData(args.otherUserID)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun subscribe(){
+        FirebaseHandler.RealtimeDatabase.getUserMoneyRef(userID).get().addOnSuccessListener {
+            var money: Int = it.value.toString().toInt()
+            if (money-subCost>0){
+                money -= subCost
+                FirebaseHandler.RealtimeDatabase.setUserMoney(userID,money)
+                FirebaseHandler.RealtimeDatabase.addSubcription(userID,args.otherUserID)
+                binding.feetBtn.visibility = View.GONE
+                transferMoney(subCost)
+            }
+        }
+    }
+
+    private fun transferMoney(money: Int){
+        FirebaseHandler.RealtimeDatabase.getUserMoneyRef(args.otherUserID).get().addOnSuccessListener {
+            var newMoney: Int = it.value.toString().toInt()
+            newMoney += money
+            FirebaseHandler.RealtimeDatabase.setUserMoney(args.otherUserID,newMoney)
+        }
+    }
+
+    private fun setSubButtonText(){
+        FirebaseHandler.RealtimeDatabase.getSubscriptionCostRef(args.otherUserID).get().addOnSuccessListener {
+            subCost = it.value.toString().toInt()
+            binding.feetBtn.text = "Subskrybuj za $subCost"
         }
     }
 
     private fun loadPhoto(){
         if(Photos.ableToDownload()){
-            FirebaseHandler.RealtimeDatabase.getImage(Photos.getNextElement().toString()).getBytes(4196*4196).addOnSuccessListener {
-                var image = it.toBitmap()
-                /*val matrix = Matrix()
-                matrix.postRotate(90.0f)
-                image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)*/
-                photos.add(image)
-                loadPhoto()
-            }
+            //if (isSubscribed) {
+                FirebaseHandler.RealtimeDatabase.getImage(Photos.getNextElement().toString())
+                    .getBytes(4196 * 4196).addOnSuccessListener {
+                    var image = it.toBitmap()
+                    /*val matrix = Matrix()
+                    matrix.postRotate(90.0f)
+                    image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)*/
+                    photos.add(image)
+                    loadPhoto()
+                }
+            /*}else{
+                if (forSubscribers[Photos.getIter()]){
+                    FirebaseHandler.RealtimeDatabase.getImage(Photos.getNextElement().toString())
+                        .getBytes(4196 * 4196).addOnSuccessListener {
+                            var image = it.toBitmap()
+                            /*val matrix = Matrix()
+                            matrix.postRotate(90.0f)
+                            image = Bitmap.createBitmap(image,0,0,image.width,image.height,matrix,true)*/
+                            photos.add(image)
+                            loadPhoto()
+                        }
+                }else{
+                    var bitmap = BitmapFactory.decodeResource(resources,R.drawable.feet)
+                    photos.add(bitmap)
+                    loadPhoto()
+                }
+            }*/
         }else{
             loadUsername()
         }
@@ -152,7 +221,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
     private fun loadAdapter(){
         with(binding.list){
             layoutManager = LinearLayoutManager(context)
-            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS,photos,titles,descriptions, username, profileDesc, this@UserProfileFragment)
+            adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS,photos,titles,descriptions, username, profileDesc, this@UserProfileFragment, forSubscribers, isSubscribed)
         }
     }
 
@@ -161,6 +230,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
         photos.clear()
         titles.clear()
         descriptions.clear()
+        forSubscribers.clear()
     }
 
     private fun ByteArray.toBitmap(): Bitmap {

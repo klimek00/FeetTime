@@ -34,6 +34,8 @@ object Photos {
         return photoID
     }
 
+    fun getIter(): Int = iterator
+
     fun ableToDownload(): Boolean{
         return iterator < ITEMS.size
     }

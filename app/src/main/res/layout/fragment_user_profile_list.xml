@@ -24,8 +24,8 @@
         android:layout_marginStart="155dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="10dp"
-        android:text="Add Feet"
-        android:visibility="invisible"
+        android:text="@string/add_feet"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

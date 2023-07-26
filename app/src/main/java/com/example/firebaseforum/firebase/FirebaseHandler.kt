@@ -32,6 +32,7 @@ object FirebaseHandler {
     private const val roomLastMessageAuthorPath = "lastMessageAuthor"
     private const val roomLastMessageTimestampPath = "lastMessageTimestamp"
     private const val imagesPath: String = "images"
+    private const val subsPath: String = "subscriptions"
 
     // Initialize a Firebase database instance using the lazy initialization pattern
     private val firebaseDatabase by lazy {
@@ -67,6 +68,20 @@ object FirebaseHandler {
 
     fun getImagesReference(): DatabaseReference{
       return firebaseDatabase.reference.child(imagesPath)
+    }
+
+    fun getSubsReference(): DatabaseReference{
+      return firebaseDatabase.reference.child(subsPath)
+    }
+
+    fun addSubcription(userUid: String, subUid: String){
+      val subsRef = getSubsReference().child(userUid).child(subUid)
+      subsRef.setValue("subscribed")
+    }
+
+    fun getListOfSubsRef(userUid: String): DatabaseReference{
+      val subsRef = getSubsReference().child(userUid)
+      return subsRef
     }
 
     //function to add new user to DB

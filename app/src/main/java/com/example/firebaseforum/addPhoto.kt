@@ -22,6 +22,7 @@ class addPhoto : Fragment() {
   private var _binding: FragmentAddPhotoBinding? = null
   private lateinit var newImage: AppCompatImageView
   private var uri: Uri? = null
+  private var switch: Boolean = false
 
 
   private val selectImageActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -54,9 +55,12 @@ class addPhoto : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 //    binding.imageDescription.setText("zmieniony")
     if (binding.imagePreview.getDrawable() == null) {
-      binding.imagePreview.setImageResource(R.drawable.default_add_photo)
+      binding.imagePreview.setImageResource(R.drawable.feet)
     }
 
+    binding.subSwitch.setOnCheckedChangeListener { _, isChecked ->
+      switch = isChecked
+    }
 
     binding.addImage.setOnClickListener {
       selectImage()
@@ -81,7 +85,7 @@ class addPhoto : Fragment() {
           FirebaseHandler.Authentication.getUserUid(),
           FirebaseHandler.Authentication.getUserEmail(),
           filename,
-          false,
+          switch,
         )
         FirebaseHandler.RealtimeDatabase.addImage(newImage, uri)
 

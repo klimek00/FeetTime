@@ -35,4 +35,8 @@
     <string name="add_money">Doładuj</string>
     <string name="default_money">0</string>
     <string name="send_money_button">Prześlij</string>
+    <string name="for_subscribers">Tylko dla subskrybujących</string>
+    <string name="add_feet">Dodaj stopę</string>
+    <string name="title_for_subs">Niedostępne</string>
+    <string name="desc_for_subs">Zasubskrybuj aby dostać dostęp do zdjęcia</string>
 </resources>
