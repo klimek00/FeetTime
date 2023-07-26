@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_forums"
-        android:icon="@drawable/ic_forum"
-        android:title="@string/title_forums" />
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Prywatne zdjecia" />
 
 </menu>

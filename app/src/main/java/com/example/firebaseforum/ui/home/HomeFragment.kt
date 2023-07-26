@@ -56,8 +56,8 @@ class HomeFragment : Fragment(), ChildEventListener {
         override fun onItemClick(position: Int) {
             val user = users[position]
             user.nickname?.let {
-                val navigateToRoomFragmentAction = ForumsFragmentDirections.actionNavigationForumsToRoomFragment(it)
-                findNavController().navigate(navigateToRoomFragmentAction)
+                val action = HomeFragmentDirections.actionNavigationHomeToUserProfileFragment(user.uid!!)
+                findNavController().navigate(action)
             }
         }
     }
@@ -92,16 +92,6 @@ class HomeFragment : Fragment(), ChildEventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        userUID = FirebaseHandler.Authentication.getUserUid().toString()
-
-        /**
-         * todo: odswiez przy zmianie
-         */
-
-        binding.feetBtn.setOnClickListener() {
-            findNavController().navigate(R.id.action_navigation_home_to_addPhotoFragment)
-        }
-
 
         binding.root.postDelayed({
             if (!FirebaseHandler.Authentication.isLoggedIn()) {
@@ -114,8 +104,7 @@ class HomeFragment : Fragment(), ChildEventListener {
             FirebaseHandler.RealtimeDatabase.getUsers().addOnSuccessListener {
                 for (child in it.children) {
                     val userFromDB = child.getValue<User>()?.apply { uid = child.key} ?: break
-
-//                    Log.d("tagggg:", "${userFromDB?.nickname}, ${FirebaseHandler.Authentication.getUserEmail()}, userid: $userFromDB, child: ${child.key}")
+                    Log.d("tagggg:", "${userFromDB?.nickname}, ${FirebaseHandler.Authentication.getUserEmail()}, userid: $userFromDB, child: ${userFromDB.uid}")
 
                     userFromDB?.let {
                         addUser(userFromDB)
@@ -139,9 +128,6 @@ class HomeFragment : Fragment(), ChildEventListener {
         return binding.root
     }
 
-    // This property is only valid between onCreateView and onDestroyView.
-    // Get the binding object from the nullable _binding property. It will throw an exception
-    // if accessed outside the lifecycle between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     // This method is called when the view is destroyed.

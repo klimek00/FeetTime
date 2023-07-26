@@ -107,6 +107,18 @@ class UserProfileFragment : Fragment(), ToDoListener {
         })
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (args.otherUserID == FirebaseHandler.Authentication.getUserUid()) {
+            binding.feetBtn.setOnClickListener() {
+                findNavController().navigate(R.id.action_userProfileFragment_to_addPhotoFragment)
+            }
+            binding.feetBtn.visibility = View.VISIBLE
+        } else {
+            binding.feetBtn.visibility = View.INVISIBLE
+        }
+    }
+
     private fun loadPhoto(){
         if(Photos.ableToDownload()){
             FirebaseHandler.RealtimeDatabase.getImage(Photos.getNextElement().toString()).getBytes(4196*4196).addOnSuccessListener {

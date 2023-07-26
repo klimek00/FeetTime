@@ -70,10 +70,10 @@ class ForumsRecyclerViewAdapter(private val clickListener: RVItemClickListener) 
     inner class ViewHolder(binding: ForumsScreenItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val username: TextView = binding.username
+        private val topic: TextView = binding.topic
         private val description: TextView = binding.description
         private val decoration: View = binding.decoration
-        private val profileImage: ImageView = binding.profileImage
+        private val ownImage: ImageView = binding.ownImage
         private val rootView = binding.root
 
         fun setOnClickListener(listener: RVItemClickListener) {
@@ -83,14 +83,14 @@ class ForumsRecyclerViewAdapter(private val clickListener: RVItemClickListener) 
         }
 
         fun bind(user: User) {
-            username.text = user.nickname?.myCapitalize()
+            topic.text = user.nickname?.myCapitalize()
             description.text = user.description
 
             if (user.uid!!.isNotEmpty()) {
                 getImage(user.uid.toString()).getBytes(4196*4196).addOnSuccessListener {
                     Log.d("userid:", user.uid.toString())
                     val img = it.toBitmap()
-                    profileImage.setImageBitmap(img)
+                    ownImage.setImageBitmap(img)
                 }
             }
 

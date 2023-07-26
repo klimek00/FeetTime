@@ -1,9 +1,12 @@
 package com.example.firebaseforum.ui.home
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -25,6 +28,9 @@ class HomeRecyclerViewAdapter(
     private val clickListener: RVItemClickListener // Constructor that takes an RVItemClickListener object as a parameter
 ) : ListAdapter<User, HomeRecyclerViewAdapter.ViewHolder>(Comparator) { // Extends ListAdapter, with Room as the data type and ViewHolder as the view holder class
 
+    fun ByteArray.toBitmap(): Bitmap {
+        return BitmapFactory.decodeByteArray(this, 0, this.size)
+    }
     object Comparator :
         DiffUtil.ItemCallback<User>() {
         // Defines a Comparator object that extends DiffUtil.ItemCallback and specifies the data type (Room)
@@ -68,14 +74,10 @@ class HomeRecyclerViewAdapter(
     inner class ViewHolder(binding: HomeScreenItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         // Initializes the TextViews and Views with their respective views in the layout
-//        private val itemLabel: TextView = binding.homeItemLabel
-//        private val itemDate: TextView = binding.date
-//        private val itemPost: TextView = binding.post
+        private val username: TextView = binding.username
+        private val description: TextView = binding.description
         private val decoration: View = binding.decoration
-
-        private val topicItem: TextView = binding.topicItem
-        private val descriptionItem: TextView = binding.descriptionItem
-        //feetphoto
+        private val profileImage: ImageView = binding.profileImage
         private val rootView = binding.root
 
 
@@ -87,11 +89,32 @@ class HomeRecyclerViewAdapter(
             }
         }
         fun bind(user: User) {
-            topicItem.text = user.nickname
-            descriptionItem.text = user.description
-            //set profile picture
-            val isOwner = user.email == FirebaseHandler.Authentication.getUserEmail()
+            username.text = user.nickname?.myCapitalize()
+            description.text = user.description
 
+            if (user.uid!!.isNotEmpty()) {
+                FirebaseHandler.RealtimeDatabase.getImage(user.uid.toString()).getBytes(4196*4196).addOnSuccessListener {
+                    Log.d("userid:", user.uid.toString())
+                    val img = it.toBitmap()
+                    profileImage.setImageBitmap(img)
+                }
+            }
+
+
+            //get username email, if the same -> unlock his own profile
+            Log.d("isowner: ", user.uid!!)
+
+            val isOwner = FirebaseHandler.RealtimeDatabase.getOtherUserElement(user.uid!!, "email")
+            Log.d("ownermeial: ", isOwner.toString())
+
+            decoration.setBackgroundColor(
+                decoration.context.getColor(
+                    if ("ye" == FirebaseHandler.Authentication.getUserEmail())
+                        R.color.secondary
+                    else
+                        R.color.primary
+                )
+            )
         }
     }
 

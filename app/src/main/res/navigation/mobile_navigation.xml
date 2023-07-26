@@ -11,11 +11,8 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_roomFragment"
-            app:destination="@id/roomFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_addPhotoFragment"
-            app:destination="@id/addPhotoFragment" />
+            android:id="@+id/action_navigation_home_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
 
     <fragment
@@ -24,8 +21,8 @@
         android:label="@string/title_forums"
         tools:layout="@layout/fragment_forums" >
         <action
-            android:id="@+id/action_navigation_forums_to_roomFragment"
-            app:destination="@id/roomFragment" />
+            android:id="@+id/action_navigation_forums_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_login"
@@ -41,15 +38,6 @@
             android:id="@+id/action_navigation_login_to_editProfileFragment"
             app:destination="@id/editProfileFragment" >
         </action>
-    </fragment>
-    <fragment
-        android:id="@+id/roomFragment"
-        android:name="com.example.firebaseforum.ui.forums.RoomFragment"
-        android:label="RoomFragment"
-        tools:layout="@layout/fragment_room">
-        <argument
-            android:name="roomName"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -91,6 +79,9 @@
         <action
             android:id="@+id/action_userProfileFragment_to_displayPhotoFragment"
             app:destination="@id/displayPhotoFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_addPhotoFragment"
+            app:destination="@id/addPhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/displayPhotoFragment"

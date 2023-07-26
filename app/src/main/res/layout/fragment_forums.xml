@@ -24,23 +24,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
         tools:listitem="@layout/forums_screen_item" />
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/add_forum_fab"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="start"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:lines="2"
-        android:text="@string/new_room_str"
-        android:textAlignment="viewStart"
-        android:textColor="@color/purple_200"
-        android:textSize="11sp"
-        app:backgroundTint="@color/secondary_variant"
-        app:elevation="2dp"
-        app:icon="@drawable/ic_add"
-        app:iconTint="@color/purple_500"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
