@@ -142,9 +142,9 @@ object FirebaseHandler {
       return userRef!!
     }
 
-    fun getPhotoDescriptionRef(photoId: String): DatabaseReference{
+    fun getOtherUserDescriptionRef(userUid: String): DatabaseReference{
       var descRef: DatabaseReference? = null
-      descRef = getImagesReference().child(photoId).child("description")
+      descRef = getUsersReference().child(userUid).child("description")
       return descRef
     }
 

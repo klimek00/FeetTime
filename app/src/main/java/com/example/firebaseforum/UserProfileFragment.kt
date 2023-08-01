@@ -54,7 +54,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
             Photos.clearData()
             clearData()
             checkSubscription()
-            getPhotosData(args.otherUserID)
+            //getPhotosData(args.otherUserID)
             adapter = UserProfileRecyclerViewAdapter(Photos.ITEMS, photos, titles, descriptions, username, profileDesc, this@UserProfileFragment, forSubscribers, isSubscribed)
         }
         return binding.root
@@ -69,6 +69,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
         Photos.addItem(
             UserPhotos(userID, userID)
         )
+        forSubscribers.add(false)
         FirebaseHandler.RealtimeDatabase.getImagesReference().addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -110,8 +111,9 @@ class UserProfileFragment : Fragment(), ToDoListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (args.otherUserID == userID) {
+            isSubscribed = true
+            binding.feetBtn.text = "Dodaj Stopę"
             binding.feetBtn.setOnClickListener() {
-                binding.feetBtn.text = "Dodaj Stopę"
                 findNavController().navigate(R.id.action_userProfileFragment_to_addPhotoFragment)
             }
         } else {
@@ -131,7 +133,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
                         binding.feetBtn.visibility = View.GONE
                     }
                 }
-                //getPhotosData(args.otherUserID)
+                getPhotosData(args.otherUserID)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -204,7 +206,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
     }
 
     private fun loadUsername(){
-        FirebaseHandler.RealtimeDatabase.getNicknameRef().get().addOnSuccessListener {
+        FirebaseHandler.RealtimeDatabase.getOtherUserNicknameRef(args.otherUserID).get().addOnSuccessListener {
             username = it.value.toString()
             titles.add(0,username)
             loadProfileDesc()
@@ -212,7 +214,7 @@ class UserProfileFragment : Fragment(), ToDoListener {
     }
 
     private fun loadProfileDesc(){
-        FirebaseHandler.RealtimeDatabase.getDescriptionRef().get().addOnSuccessListener {
+        FirebaseHandler.RealtimeDatabase.getOtherUserDescriptionRef(args.otherUserID).get().addOnSuccessListener {
             profileDesc = it.value.toString()
             descriptions.add(0,profileDesc)
             loadAdapter()

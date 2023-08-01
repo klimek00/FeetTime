@@ -50,20 +50,26 @@ class UserProfileRecyclerViewAdapter(
             }
         }
         else {
-            //if (forSubscribers[position] && !isSubscribed){
+            if(isSubscribed){
                 if(photos.size>0 && position<photos.size) {
-                    holder.image.setImageBitmap(photos[position])
-                    holder.description.text = descriptions[position]
-                    holder.nickname.text = titles[position]
-                }
-            /*}else {
-                if (photos.size > 0 && position < photos.size) {
                     holder.image.setImageBitmap(photos[position])
                     holder.description.text = descriptions[position]
                     holder.nickname.text = titles[position]
                     holder.container.setOnClickListener { eventListener.onItemClick(position) }
                 }
-            }*/
+            }else{
+                if(photos.size>0 && position<photos.size){
+                    if (forSubscribers[position]){
+                        holder.nickname.text = "Tylko dla subskrybujących"
+                        holder.description.text = "Tylko dla subskrybujących"
+                    }else{
+                        holder.image.setImageBitmap(photos[position])
+                        holder.description.text = descriptions[position]
+                        holder.nickname.text = titles[position]
+                        holder.container.setOnClickListener { eventListener.onItemClick(position) }
+                    }
+                }
+            }
         }
 
     }

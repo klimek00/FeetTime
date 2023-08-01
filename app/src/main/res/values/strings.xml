@@ -39,4 +39,5 @@
     <string name="add_feet">Dodaj stopę</string>
     <string name="title_for_subs">Niedostępne</string>
     <string name="desc_for_subs">Zasubskrybuj aby dostać dostęp do zdjęcia</string>
+    <string name="only_for_subs">Tylko dla subskrybujacych</string>
 </resources>
